@@ -1,11 +1,22 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, StatusBar } from 'react-native';
+import Routes from './src/Routes'
+import { Montserrat_800ExtraBold, useFonts } from '@expo-google-fonts/montserrat';
+import { AppLoading } from 'expo';
 
-export default function App() {
+const App = () => {
+  const [fontsLoaded] = useFonts({
+    Montserrat_800ExtraBold,
+
+  })
+  if(!fontsLoaded) {
+    return <AppLoading />
+  }
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-    </View>
+    <>
+    <StatusBar  backgroundColor="transparent" translucent/>
+    <Routes />
+    </>
   );
 }
 
@@ -17,3 +28,5 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
+
+export default App;
