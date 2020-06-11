@@ -1,21 +1,24 @@
 import React from 'react';
-import { StyleSheet, Text, View, StatusBar } from 'react-native';
+import { StyleSheet } from 'react-native';
 import Routes from './src/Routes'
-import { Montserrat_800ExtraBold, useFonts } from '@expo-google-fonts/montserrat';
+import { Montserrat_800ExtraBold, Montserrat_600SemiBold, useFonts } from '@expo-google-fonts/montserrat';
+import { Raleway_800ExtraBold, Raleway_600SemiBold } from '@expo-google-fonts/raleway'
 import { AppLoading } from 'expo';
 
 const App = () => {
   const [fontsLoaded] = useFonts({
     Montserrat_800ExtraBold,
-
+    Raleway_800ExtraBold,
+    Montserrat_600SemiBold,
+    Raleway_600SemiBold
   })
-  if(!fontsLoaded) {
-    return <AppLoading />
-  }
+
   return (
     <>
-    <StatusBar  backgroundColor="transparent" translucent/>
-    <Routes />
+    {fontsLoaded ?
+        <Routes />
+    : <AppLoading />
+    }
     </>
   );
 }

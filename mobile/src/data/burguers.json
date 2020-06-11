@@ -1,0 +1,16 @@
+[
+    {
+        "name": "MEXICANO",
+        "description": "Lorem impsum dolor sit amet, consectetur adipiscing elit.",
+        "price": 19.90,
+        "image_url": "mexicano",
+        "id": 1
+    },
+    {
+        "name": "MEXICANO",
+        "description": "Lorem impsum dolor sit amet, consectetur adipiscing elit.",
+        "price": 19.90,
+        "image_url": "mexicano",
+        "id": 2
+    }
+]

@@ -9,7 +9,8 @@ import Orders from './pages/orders'
 import Sale from './pages/sale'
 import Profile from './pages/profile'
 const Tab = createBottomTabNavigator();
-
+import { FontAwesome5 } from '@expo/vector-icons';
+import { Ionicons } from '@expo/vector-icons';
 const Routes = () => {
     return (
         <>
@@ -19,29 +20,23 @@ const Routes = () => {
                 screenOptions={({ route }) => ({
                 tabBarIcon: ({ focused, color, size }) => {
                     switch(route.name) {
-                        case 'Carte':
-                            return <Icon name={"menu"} size={size} color={color} />;
-                        case 'Orders':
-                            return <Icon name={"menu"} size={size} color={color} />;
-                        case 'Sale':
-                            return <Icon name={"menu"} size={size} color={color} />;
-                        case 'Profile':
-                            return <Icon name={"menu"} size={size} color={color} />;
+                        case 'Cardápio':
+                            return <FontAwesome5 name="shopping-bag" size={size} color={color} />;
+                        case 'Perfil':
+                            return <Ionicons name="md-person" size={size} color={color} />
                     }
                 },
                 })}
                 tabBarOptions={{
                 style: {
-                    backgroundColor: '#292929'
+                    backgroundColor: '#F4F4F4'
                 },
-                activeTintColor: '#FFC737',
-                inactiveTintColor: '#E5E5E5',
+                activeTintColor: '#ECB243',
+                inactiveTintColor: '#292929',
                 }}
             >
-                <Tab.Screen name="Carte" component={Carte}/>
-                <Tab.Screen name="Orders" component={Orders}/>
-                <Tab.Screen name="Sale" component={Sale}/>
-                <Tab.Screen name="Profile" component={Profile}/>
+                <Tab.Screen name="Cardápio" component={Carte}/>
+                <Tab.Screen name="Perfil" component={Profile}/>
             </Tab.Navigator>
         </NavigationContainer>
         </>
