@@ -1,11 +1,17 @@
-import express from 'express'
+import express from "express";
+import mongoose from "mongoose";
+import cors from "cors";
+import routes from "./routes";
 
-const app = express()
+const app = express();
 
-app.get('/', (request, response) => {
-  return response.json({ message: 'Hello World' })
-})
+app.use(cors());
+app.use(express.json());
+app.use(routes);
 
-app.listen(3333)
+mongoose.connect("mongodb+srv://pedrolages:P1t0.R3sco@pitorescodev-ydxsn.gcp.mongodb.net/PitorescoDev?retryWrites=true&w=majority",
+	{ useNewUrlParser: true, useUnifiedTopology: true }).then(() => console.log("Connected!"));
 
-console.log('running app on 3333.')
+app.listen(3333);
+
+console.log("running app on 3333.");
