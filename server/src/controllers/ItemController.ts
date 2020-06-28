@@ -20,10 +20,30 @@ class ItemController {
 
 		return res.json(item);
 	}
+
 	async index (req: Request, res: Response): Promise<Response<Document[]>> {
 		const items = await Item.find();
 
 		return res.json(items);
+	}
+
+	async show(req: Request, res: Response): Promise<Response<Document>> {
+		const { id } = req.params;
+		const item = await Item.findById(id);
+		return res.json(item);
+	}
+
+	async delete(req: Request, res: Response): Promise<Response<Document>> {
+		const { id } = req.params;
+		const item = await Item.findByIdAndDelete(id);
+		return res.json(item);
+	}
+
+	async update(req: Request, res: Response): Promise<Response<Document>> {
+		const { id } = req.params;
+		const { status, name, price, imageUrl, description}: ItemType = req.body;
+		const item = await Item.findByIdAndUpdate(id, {status, name, price, imageUrl, description}, {new: true, omitUndefined: true});
+		return res.json(item);
 	}
 }
 

@@ -24,6 +24,25 @@ class SectionController {
 
 		return res.json(sections);
 	}
+
+	async show(req: Request, res: Response): Promise<Response<Document>> {
+		const { id } = req.params;
+		const section = await Section.findById(id);
+		return res.json(section);
+	}
+
+	async delete(req: Request, res: Response): Promise<Response<Document>> {
+		const { id } = req.params;
+		const section = await Section.findByIdAndDelete(id);
+		return res.json(section);
+	}
+
+	async update(req: Request, res: Response): Promise<Response<Document>> {
+		const { id } = req.params;
+		const { status, name}: SectionType = req.body;
+		const section = await Section.findByIdAndUpdate(id, {status, name}, {new: true, omitUndefined: true});
+		return res.json(section);
+	}
 }
 
 export default SectionController;

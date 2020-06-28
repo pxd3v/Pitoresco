@@ -17,10 +17,30 @@ class MenuController {
 
 		return res.json(menu);
 	}
+
 	async index (req: Request, res: Response): Promise<Response<Document[]>> {
 		const menus = await Menu.find();
 
 		return res.json(menus);
+	}
+
+	async show(req: Request, res: Response): Promise<Response<Document>> {
+		const { id } = req.params;
+		const menu = await Menu.findById(id);
+		return res.json(menu);
+	}
+
+	async delete(req: Request, res: Response): Promise<Response<Document>> {
+		const { id } = req.params;
+		const menu = await Menu.findByIdAndDelete(id);
+		return res.json(menu);
+	}
+
+	async update(req: Request, res: Response): Promise<Response<Document>> {
+		const { id } = req.params;
+		const { status, name}: MenuType = req.body;
+		const menu = await Menu.findByIdAndUpdate(id, {status, name}, {new: true, omitUndefined: true});
+		return res.json(menu);
 	}
 }
 
