@@ -3,7 +3,6 @@ import MenuController from "./controllers/MenuController";
 import ItemController from "./controllers/ItemController";
 import SectionController from "./controllers/SectionController";
 import AddController from "controllers/AddController";
-
 const menuController = new MenuController();
 const itemController = new ItemController();
 const sectionController = new SectionController();
@@ -12,7 +11,7 @@ const addController = new AddController();
 const routes = express.Router();
 
 routes.get("/", (request, response) => {
-	return response.json({ message: "Hello World" });
+	return response.json({ message: "Hello" });
 });
 
 routes.post("/add", addController.store);

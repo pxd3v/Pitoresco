@@ -1,6 +1,6 @@
 import React from 'react';
 import { View,
-  StyleSheet,
+    StyleSheet,
 } from 'react-native';
 import AddsListItem from '../AddsListItem';
 
@@ -13,24 +13,36 @@ const styles = StyleSheet.create({
 const AddsList = () => {
     const data = [
         {
-            description: 'Lorem impsum dolor sit amet, consectetur adipiscing elit.',
+            description: 'Picles',
             price: 5.9,
             formatedPrice: '5,90',
             id: 0
         },
         {
-            description: 'Lorem impsum dolor sit amet, consectetur adipiscing elit.',
+            description: 'Bacon',
             price: 5.9,
             formatedPrice: '5,90',
             id: 1
         },
         {
-            description: 'Lorem impsum dolor sit amet, consectetur adipiscing elit.',
+            description: 'Ovo',
             price: 5.9,
             formatedPrice: '5,90',
             id: 2
-        }
-    ]
+        },
+        {
+            description: 'Carne',
+            price: 5.9,
+            formatedPrice: '5,90',
+            id: 3
+        },
+        {
+            description: 'Molho especial',
+            price: 5.9,
+            formatedPrice: '5,90',
+            id: 4
+        },
+    ];
     return (
         <View style={styles.listContainer}>
             {data.map((item, index) => (
@@ -42,6 +54,6 @@ const AddsList = () => {
                 />
             ))}
         </View>
-    )
-}
+    );
+};
 export default AddsList;
