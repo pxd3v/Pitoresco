@@ -93,8 +93,8 @@ const ListCard: React.FC<ListCardProps> = ({content}: ListCardProps) => {
                 </View>
                 <View style={styles.textContainer}>
                     <Text style={styles.name}>{name}</Text>
-                    <View style={styles.descriptionContainer}>
-                        <Text style={styles.description}>{description}</Text>
+                    <View style={styles.descriptionContainer} >
+                        <Text style={styles.description} numberOfLines={3}>{description}</Text>
                     </View>
                     <Text style={styles.price}>{price}</Text>
                 </View>

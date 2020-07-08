@@ -17,7 +17,12 @@ class ItemController {
 		});
 
 		await item.populate({path: "sections", model: Section}).execPopulate();
-
+		sections.map(async s => {
+			const newSection = await Section.findByIdAndUpdate(s, { $addToSet: { items: item._id}}, {new: true, omitUndefined: true});
+			if(newSection){
+				await newSection?.populate({path: "items", model: Item}).execPopulate();
+			}
+		});
 		return res.json(item);
 	}
 

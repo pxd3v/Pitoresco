@@ -4,8 +4,8 @@ import { View,
     StyleSheet,
     TextInput
 } from 'react-native';
-import CarteListItem from '../CarteListItem';
 import { FontAwesome } from '@expo/vector-icons';
+import { Section } from '../Section';
 
 const styles = StyleSheet.create({
     card: {
@@ -57,11 +57,11 @@ const styles = StyleSheet.create({
     }
 });
 
-const CarteList = () => {
+const CarteList:React.FC = () => {
     const items = [
         {
             name: 'MEXICANO',
-            description: 'Lorem impsum dolor sit amet, consectetur adipiscing elit.',
+            description: 'Lorem impsum dolor sit amet, consectetur adipiscing elit. Lorem impsum dolor sit amet, consectetur adipiscing elit.',
             price: 19.9,
             priceFormated: '19,90',
             imageUrl: 'mexicano.jpg',
@@ -126,9 +126,8 @@ const CarteList = () => {
                         <FontAwesome name="search" color="black" style={styles.searchIcon}/>
                         <TextInput style={styles.search} />
                     </View>
-                    {items.map(item => (
-                        <CarteListItem key={String(item.id)} content={{name: item.name, description: item.description, imageUrl: item.imageUrl, price: item.priceFormated}}/>
-                    ))}
+                    <Section items={items} title="BURGUERS"/>
+                    <Section items={items} title="BURGUERS"/>
                 </View>
             </View>
         </View>
