@@ -10,35 +10,38 @@ import Profile from './pages/profile';
 const Tab = createBottomTabNavigator();
 import { FontAwesome5 } from '@expo/vector-icons';
 import { Ionicons } from '@expo/vector-icons';
+import { ShoppingCartProvider } from './context/ShoppingCartContext';
 interface RoutesProps {}
 
 const Routes: React.FC<RoutesProps> = () => {
     return (
         <>
-            <NavigationContainer>
-                <Tab.Navigator
-                    screenOptions={({ route }) => ({
-                        tabBarIcon: ({ color, size }) => {
-                            switch(route.name) {
-                            case 'Cardápio':
-                                return <FontAwesome5 name="shopping-bag" size={size} color={color} />;
-                            case 'Perfil':
-                                return <Ionicons name="md-person" size={size} color={color} />;
-                            }
-                        },
-                    })}
-                    tabBarOptions={{
-                        style: {
-                            backgroundColor: '#F4F4F4'
-                        },
-                        activeTintColor: '#ECB243',
-                        inactiveTintColor: '#292929',
-                    }}
-                >
-                    <Tab.Screen name="Cardápio" component={Carte}/>
-                    <Tab.Screen name="Perfil" component={Profile}/>
-                </Tab.Navigator>
-            </NavigationContainer>
+            <ShoppingCartProvider>
+                <NavigationContainer>
+                    <Tab.Navigator
+                        screenOptions={({ route }) => ({
+                            tabBarIcon: ({ color, size }) => {
+                                switch(route.name) {
+                                case 'Cardápio':
+                                    return <FontAwesome5 name="shopping-bag" size={size} color={color} />;
+                                case 'Perfil':
+                                    return <Ionicons name="md-person" size={size} color={color} />;
+                                }
+                            },
+                        })}
+                        tabBarOptions={{
+                            style: {
+                                backgroundColor: '#F4F4F4'
+                            },
+                            activeTintColor: '#ECB243',
+                            inactiveTintColor: '#292929',
+                        }}
+                    >
+                        <Tab.Screen name="Cardápio" component={Carte}/>
+                        <Tab.Screen name="Perfil" component={Profile}/>
+                    </Tab.Navigator>
+                </NavigationContainer>
+            </ShoppingCartProvider>
         </>
     );
 };

@@ -65,7 +65,7 @@ const CarteList:React.FC = () => {
             price: 19.9,
             priceFormated: '19,90',
             imageUrl: 'mexicano.jpg',
-            id: 0
+            id: '0'
         },
         {
             name: 'X BURGER',
@@ -73,7 +73,7 @@ const CarteList:React.FC = () => {
             price: 19.9,
             priceFormated: '19,90',
             imageUrl: 'x-burger.png',
-            id: 1
+            id: '1'
         },
         {
             name: 'PITORESCO BURGER',
@@ -81,7 +81,7 @@ const CarteList:React.FC = () => {
             price: 19.9,
             priceFormated: '19,90',
             imageUrl: 'pitoresco-burger.png',
-            id: 2
+            id: '2'
         },
         {
             name: 'BACON CHEDDAR BURGER',
@@ -89,7 +89,7 @@ const CarteList:React.FC = () => {
             price: 19.9,
             priceFormated: '19,90',
             imageUrl: 'bacon-cheddar-burger.png',
-            id: 3
+            id: '3'
         },
         {
             name: 'X EGG BACON',
@@ -97,7 +97,7 @@ const CarteList:React.FC = () => {
             price: 19.90,
             priceFormated: '19,90',
             imageUrl: 'x-egg-bacon.png',
-            id: 4
+            id: '4'
         },
         {
             name: 'X EGG',
@@ -105,7 +105,7 @@ const CarteList:React.FC = () => {
             price: 19.90,
             priceFormated: '19,90',
             imageUrl: 'x-egg.png',
-            id: 5
+            id: '5'
         },
         {
             name: 'SERRA BURGER',
@@ -113,10 +113,9 @@ const CarteList:React.FC = () => {
             price: 19.90,
             priceFormated: '19,90',
             imageUrl: 'serra-burger.png',
-            id: 6
+            id: '6'
         },
     ];
-
     return (
         <View style={styles.carteContainer}>
             <Text style={styles.listTitle}>CARDÁPIO</Text>

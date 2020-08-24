@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
   
 });
 
-const CarteHomeScreen = () => {
+const CarteHomeScreen: React.FC = () => {
     return (
         <>
             <StatusBar backgroundColor="transparent" translucent/>

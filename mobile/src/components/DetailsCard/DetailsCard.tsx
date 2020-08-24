@@ -62,10 +62,12 @@ const styles = StyleSheet.create({
     }
 });
 interface itemDetail {
-    imageUrl: string;
-    description: string;
-    price: string;
     name: string;
+    price: number;
+    priceFormated: string;
+    description: string;
+    imageUrl: string;
+    id: string;
 }
 
 interface CarteListItemProps {
@@ -73,7 +75,7 @@ interface CarteListItemProps {
 }
 
 const CarteListItem: React.FC<CarteListItemProps> = ({details}: CarteListItemProps) => {
-    const { imageUrl, description, price, name} = details;
+    const { imageUrl, description, priceFormated, name} = details;
     const navigation = useNavigation();
     const handleNavigationToDetails = () => {
         navigation.navigate('ImageDetail', {
@@ -93,7 +95,7 @@ const CarteListItem: React.FC<CarteListItemProps> = ({details}: CarteListItemPro
             <View style={styles.contentContainer}>
                 <View style={styles.contentHeader}>
                     <Text style={styles.burguerName}>{name}</Text>
-                    <Text style={styles.price}>{price}</Text>
+                    <Text style={styles.price}>{priceFormated}</Text>
                 </View>
                 <Text style={styles.description}>{description}</Text>
             </View>

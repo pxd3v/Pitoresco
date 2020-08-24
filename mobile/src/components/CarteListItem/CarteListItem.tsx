@@ -63,9 +63,11 @@ const styles = StyleSheet.create({
 });
 export interface Content {
     name: string;
-    price: string;
+    price: number;
+    priceFormated: string;
     description: string;
     imageUrl: string;
+    id: string;
 }
 
 interface ListCardProps {
@@ -74,7 +76,7 @@ interface ListCardProps {
 
 
 const ListCard: React.FC<ListCardProps> = ({content}: ListCardProps) => {
-    const {name, price, description, imageUrl} = content;
+    const {name, priceFormated, description, imageUrl} = content;
     const navigation = useNavigation();
     const handleNavigationToDetails = () => {
         navigation.navigate('Details', {
@@ -96,7 +98,7 @@ const ListCard: React.FC<ListCardProps> = ({content}: ListCardProps) => {
                     <View style={styles.descriptionContainer} >
                         <Text style={styles.description} numberOfLines={3}>{description}</Text>
                     </View>
-                    <Text style={styles.price}>{price}</Text>
+                    <Text style={styles.price}>{priceFormated}</Text>
                 </View>
             </View>
         </RectButton>

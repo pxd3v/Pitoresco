@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import {
     StyleSheet, 
     View,
@@ -17,9 +17,20 @@ import DetailsCard from '../../components/DetailsCard';
 import AddsList from '../../components/AddsList';
 import { RectButton } from 'react-native-gesture-handler';
 import { Content } from '../../components/CarteListItem/CarteListItem';
+import { ShoppingCartContext } from '../../context/ShoppingCartContext';
 
 interface Params {
     details: Content;
+}
+export interface Add {
+    name: string,
+    price: number,
+    id: string
+}
+
+export interface AddListItem {
+    add: Add,
+    amount: number
 }
 
 const styles = StyleSheet.create({
@@ -107,15 +118,33 @@ const styles = StyleSheet.create({
 });
 
 const CarteDetailsScreen = () => {
+    const [addsList, setAddsList] = useState<AddListItem[]>([]);
+    const shoppingCarteContext = useContext(ShoppingCartContext);
+    const [observacao, setObservacao] = useState('');
     const route = useRoute();
     const navigation = useNavigation();
     const handleNavigateBack = () => {
         navigation.goBack();
     };
-    const handleSubmit = () => {
+    const routeParams = route.params as Params;
+    const handleSubmit = async () => {
+        shoppingCarteContext.addItem({
+            amount: 1,
+            imageUrl: routeParams.details.imageUrl,
+            itemId: routeParams.details.id,
+            adds: addsList.map((add) => ({
+                addId:add.add.id,
+                price: add.add.price,
+                amount: add.amount, 
+                name: add.add.name,
+            })),
+            name: routeParams.details.name,
+            total: routeParams.details.price * 1,
+            obs: observacao,
+            price: routeParams.details.price
+        });
         handleNavigateBack();
     };
-    const routeParams = route.params as Params;
 
     return (
         <>
@@ -137,7 +166,7 @@ const CarteDetailsScreen = () => {
                         <Text style={styles.addsTitle}>
                 ADICIONAIS
                         </Text>
-                        <AddsList />
+                        <AddsList addsList={addsList} setAddsList={setAddsList}/>
                     </View>
                     <View style={styles.obsContainer}>
                         <View style={styles.obsTitleContainer}>
@@ -153,6 +182,8 @@ const CarteDetailsScreen = () => {
                                 numberOfLines={4} 
                                 style={styles.input} 
                                 placeholder={'Adicione uma observação como por exemplo: sem alface, etc..'}
+                                value={observacao}
+                                onChange={(event) => setObservacao(event.nativeEvent.text)}
                             />
                         </View>
                     </View>

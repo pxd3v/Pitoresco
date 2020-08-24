@@ -13,7 +13,7 @@ interface SectionProps {
         imageUrl: string;
         priceFormated: string;
         description: string;
-        id: number;
+        id: string;
     }[]
 }
 
@@ -34,7 +34,7 @@ const Section: React.FC<SectionProps> =({ title, items }: SectionProps) => {
         <View style={styles.container}>
             <Text style={styles.title}>{title}</Text>
             {items.map(item => (
-                <CarteListItem key={String(item.id)} content={{name: item.name, description: item.description, imageUrl: item.imageUrl, price: item.priceFormated}}/>
+                <CarteListItem key={item.id} content={{name: item.name, description: item.description, imageUrl: item.imageUrl, price: item.priceFormated}}/>
             ))}
         </View>
     );

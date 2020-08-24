@@ -10,7 +10,7 @@ app.use(routes);
 
 app.use(express.static("public"));
 
-mongoose.connect("connection",
+mongoose.connect("mongodb+srv://pedrolages:pitoresco@pitorescodev-ydxsn.gcp.mongodb.net/PitorescoDev?retryWrites=true&w=majority",
 	{ useNewUrlParser: true, useUnifiedTopology: true }).then(() => console.log("Connected!"));
 
 app.listen(3333);
